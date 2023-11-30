@@ -1,4 +1,12 @@
-# 💤 LazyVim
-
-A starter template for [LazyVim](https://github.com/LazyVim/LazyVim).
-Refer to the [documentation](https://lazyvim.github.io/installation) to get started.
+NeoLaze
+=======
+A custom Neovim configuration by yours truly
+> Who's that
+>> Like you don't know :(
+## Goal
+* Honestly who knows
+* Neovim configuration, "nothing to IDE" or something
+---
+# December goals
+- [ ] Add more plugins
+- [ ] OPTIMIZE
