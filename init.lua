@@ -234,6 +234,9 @@ require('telescope').setup {
   },
 }
 
+-- Colors
+require 'colorizer'.setup()
+
 -- Transparency for Neotree
 require('transparent').clear_prefix('NeoTree')
 
