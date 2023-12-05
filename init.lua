@@ -241,7 +241,7 @@ require 'colorizer'.setup()
 require('transparent').clear_prefix('NeoTree')
 
 -- Transparency for glow
-require('transparent').clear_prefix('Glow')
+require('transparent').clear_prefix('glow')
 
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
@@ -461,6 +461,43 @@ local servers = {
 -- Setup neovim lua configuration
 require('neodev').setup()
 
+local highlight = {
+    "RainbowRed",
+    "RainbowYellow",
+    "RainbowBlue",
+    "RainbowOrange",
+    "RainbowGreen",
+    "RainbowViolet",
+    "RainbowCyan",
+}
+
+local hooks = require "ibl.hooks"
+-- create the highlight groups in the highlight setup hook, so they are reset
+-- every time the colorscheme changes
+hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
+    vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#E06C75" })
+    vim.api.nvim_set_hl(0, "RainbowYellow", { fg = "#E5C07B" })
+    vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#61AFEF" })
+    vim.api.nvim_set_hl(0, "RainbowOrange", { fg = "#D19A66" })
+    vim.api.nvim_set_hl(0, "RainbowGreen", { fg = "#98C379" })
+    vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#C678DD" })
+    vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#56B6C2" })
+end)
+
+-- Setup blankline for indentation
+require("ibl").setup { 
+  indent = { highlight = highlight },
+  whitespace = { 
+    highlight = highlight,
+    remove_blankline_trail = false,
+   },
+  scope = { enabled = true },
+}
+
+require("toggleterm").setup{
+  open_mapping = [[<leader>t]],
+}
+
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
@@ -533,6 +570,11 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
+
+-- Hide ~ at the end of buffers
+vim.opt.fillchars = { eob = ' ' }
+vim.wo.fillchars='eob: '
+
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
