@@ -496,6 +496,7 @@ require("ibl").setup {
 
 require("toggleterm").setup{
   open_mapping = [[<leader>t]],
+  insert_mappings = false
 }
 
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
