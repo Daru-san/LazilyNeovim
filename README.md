@@ -1,5 +1,6 @@
-NeoLaze
+LazilyNeovim
 =======
+
 A custom Neovim configuration by yours truly
 > Who's that
 >> Like you don't know :(
